@@ -8,6 +8,13 @@
         line-height: 1.6em;
     }
 
+    &--compact {
+        .cdx-list__item {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+    }
+
     &--ordered {
         list-style: decimal;
     }
@@ -42,5 +49,13 @@
         .cdx-settings-button {
             width: 50%;
         }
+    }
+}
+
+[data-item-name="normal"], [data-item-name="compact"] {
+    .ce-popover-item__icon {
+        width: 1px;
+        overflow: hidden;
+        opacity: 0;
     }
 }

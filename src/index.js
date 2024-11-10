@@ -3,7 +3,15 @@
  */
 import './index.css';
 
-import { IconListBulleted, IconListNumbered } from '@codexteam/icons'
+import { IconListBulleted } from '@codexteam/icons'
+
+import { Icon as NumberedIcon } from './icons/numbered.js';
+import { Icon as UnorderedIcon } from './icons/unordered.js';
+import { Icon as CircledIcon } from './icons/circled.js';
+import { Icon as SquaredIcon } from './icons/squared.js';
+import { Icon as StaredIcon } from './icons/stared.js';
+import { Icon as DashedIcon } from './icons/dashed.js';
+import { Icon as ArrowedIcon } from './icons/arrowed.js';
 
 /**
  * @typedef {import('@editorjs/editorjs').PasteEvent} PasteEvent
@@ -82,16 +90,52 @@ export default class List {
 
     this.settings = [
       {
+        name: 'numbered',
+        label: this.api.i18n.t('Numbered'),
+        icon: NumberedIcon,
+        default: config.defaultStyle === 'numbered' || true,
+      },
+
+      {
         name: 'unordered',
         label: this.api.i18n.t('Unordered'),
-        icon: IconListBulleted,
+        icon: UnorderedIcon,
         default: config.defaultStyle === 'unordered' || false,
       },
+
       {
-        name: 'ordered',
-        label: this.api.i18n.t('Ordered'),
-        icon: IconListNumbered,
-        default: config.defaultStyle === 'ordered' || true,
+        name: 'circled',
+        label: this.api.i18n.t('Circled'),
+        icon: CircledIcon,
+        default: config.defaultStyle === 'circled' || false,
+      },
+
+      {
+        name: 'squared',
+        label: this.api.i18n.t('Squared'),
+        icon: SquaredIcon,
+        default: config.defaultStyle === 'squared' || false,
+      },
+
+      {
+        name: 'stared',
+        label: this.api.i18n.t('Stared'),
+        icon: StaredIcon,
+        default: config.defaultStyle === 'stared' || false,
+      },
+
+      {
+        name: 'dashed',
+        label: this.api.i18n.t('Dashed'),
+        icon: DashedIcon,
+        default: config.defaultStyle === 'dashed' || false,
+      },
+
+      {
+        name: 'arrowed',
+        label: this.api.i18n.t('Arrowed'),
+        icon: ArrowedIcon,
+        default: config.defaultStyle === 'arrowed' || false,
       },
     ];
 
@@ -244,8 +288,11 @@ export default class List {
    * @returns {HTMLOListElement|HTMLUListElement}
    */
   makeMainTag(style) {
-    const styleClass = style === 'ordered' ? this.CSS.wrapperOrdered : this.CSS.wrapperUnordered;
-    const tag = style === 'ordered' ? 'ol' : 'ul';
+    const styleClass = style === 'numbered'
+        ? this.CSS.wrapperOrdered
+        : `${this.CSS.wrapperList}${style}`;
+
+    const tag = style === 'numbered' ? 'ol' : 'ul';
 
     return this._make(tag, [this.CSS.baseBlock, this.CSS.wrapper, styleClass], {
       contentEditable: !this.readOnly,
@@ -279,7 +326,7 @@ export default class List {
       baseBlock: this.api.styles.block,
       wrapper: 'cdx-list',
       wrapperOrdered: 'cdx-list--ordered',
-      wrapperUnordered: 'cdx-list--unordered',
+      wrapperList: `cdx-list--`,
       item: 'cdx-list__item',
     };
   }

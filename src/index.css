@@ -4,16 +4,36 @@
     outline: none;
 
     &__item {
-        padding: 5.5px 0 5.5px 3px;
+        padding: 5.5px 0 5.5px 5px;
         line-height: 1.6em;
-    }
-
-    &--unordered {
-        list-style: disc;
     }
 
     &--ordered {
         list-style: decimal;
+    }
+
+    &--unordered {
+        list-style-type: disc;
+    }
+
+    &--circled {
+        list-style-type: circle;
+    }
+
+    &--squared {
+        list-style-type: square;
+    }
+
+    &--stared {
+        list-style-type: '★';
+    }
+
+    &--dashed {
+        list-style-type: '-';
+    }
+
+    &--arrowed {
+        list-style-type: '→';
     }
 
     &-settings {

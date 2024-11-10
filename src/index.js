@@ -265,7 +265,7 @@ export default class List {
     return {
       style: {},
       items: {
-        span: true,
+        font: true,
         br: true,
         a: true,
         i: true,

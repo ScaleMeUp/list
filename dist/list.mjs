@@ -229,7 +229,7 @@ class w {
     return {
       style: {},
       items: {
-        span: !0,
+        font: !0,
         br: !0,
         a: !0,
         i: !0,
